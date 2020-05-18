@@ -1,0 +1,42 @@
+data:
+  freq: 1d
+  price_type: un
+execution:
+  exec_lag: 1
+  exec_price_mode: EXEC_BY_OPEN
+result:
+  result_folder: e:\Strategy
+settle: {}
+strategy:
+  id: 1
+  config_file: D:\strategy_signal\signal_config
+  config_file_output: D:\tradelib\test\batch_requests
+  product_group:
+    - P
+
+  strategy_type: CtaYmjh
+  capital: 1000000
+  s_period: {'Grains': [28, 8, 13, 25, 8],
+                  'Chem': [5, 5, 10, 6, 5],
+                  'BaseMetal': [16, 6, 7, 9, 5],
+                  'Bulks': [7, 6, 6, 7, 28],
+                  'Equity': [16, 26, 5, 24, 19],
+                  'Bonds': [7, 13, 4, 22],
+                  'PreciousMetal': [6, 26, 9, 18, 26]}
+  l_period: {'Grains': [45, 18, 27, 30, 23],
+                  'Chem': [32, 46, 44, 33, 20],
+                  'BaseMetal': [44, 17, 29, 14, 41],
+                  'Bulks': [35, 38, 29, 32, 62],
+                  'Equity': [65, 50, 50, 32, 26],
+                  'Bonds': [20, 62, 17, 29],
+                  'PreciousMetal': [23, 41, 14, 41, 56]}
+  scaler: 3
+  daily_start_time: 9:00:00
+  daily_end_time: 23:30:00
+  start_date: 2000-01-01
+  end_date: 2030-08-30
+  period: '1d'
+  maxLeverage: 4
+  targetVol: 0.1
+  volLookback: 20
+  master_config_prefix: cta_daily_requests

@@ -1,0 +1,7 @@
+部署机器： 华为云 119.3.39.142
+
+脚本位置： D:\strategy_signal\resFuturesCTA_YMJH\backtest_config_cta_ymjh
+运行脚本：backtest_ctaymjh_byconfig.py
+
+生成配置文件路径： D:\tradelib\test\strategy_input
+

@@ -1,0 +1,16 @@
+运行监控：
+
+在strategy.config_file_output配置路径下，每日夜盘开始前（20：30之前）生成策略配置文件，如cta_daily_requests_20200206_night.csv、
+cta_daily_requests_20200207_day.csv均应在20200206晚20：30之前生成，两文件分别指夜盘交易品种和日盘交易
+品种的配置文件
+
+每日运行生成配置文件包括（以20200206晚执行结果为例）：
+1、cta_daily_requests_20200206_night.csv  夜盘品种交易配置文件
+2、cta_daily_requests_20200207_day.csv    日盘品种交易配置文件
+
+    strategy:
+      id: 1
+      runing_model: backtest   =>  backtest 回测模式； SIMNOW 模拟盘模式；
+      config_file    =》  config_sample_1d.yaml所在目录
+      config_file_output =》 模拟盘配置文件生成目录
+      product_group：  =》 上线品种

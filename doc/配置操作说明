@@ -1,0 +1,13 @@
+配置文件： backtest_config_cta_ymjh\config_sample_1d.yaml
+
+    strategy:
+      id: 1
+      runing_model: backtest   =>  backtest 回测模式； SIMNOW 模拟盘模式；
+      config_file    =》  config_sample_1d.yaml所在目录
+      config_file_output =》 模拟盘配置文件生成目录
+      product_group：  =》 上线品种
+  
+ 指定日期执行文件：
+ 
+    修改backtest_config_cta_ymjh\backtest_ctaymjh_byconfig.py中 curr_date(代码165行) 运行
+    
