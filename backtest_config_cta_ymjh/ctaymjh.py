@@ -6,17 +6,17 @@
 import pandas as pd
 import numpy  as np
 import datetime
-from common.file_saver import file_saver
-from common.decorator import runing_time
-from strategy.strategy import Strategy
-from data_engine.data_factory import DataFactory
-from data_engine.global_variable import ASSETTYPE_FUTURE, DATASOURCE_REMOTE, DATASOURCE_LOCAL
-from config.config import Config_back_test, Config_trading
+from resRepo.common.file_saver import file_saver
+from resRepo.common.decorator import runing_time
+from resRepo.strategy.strategy import Strategy
+from resRepo.data_engine.data_factory import DataFactory
+from resRepo.data_engine.global_variable import ASSETTYPE_FUTURE, DATASOURCE_REMOTE, DATASOURCE_LOCAL
+from resRepo.config.config import Config_back_test, Config_trading
 
-from data_engine.instrument.future import Future
-from data_engine.instrument.product import Product
-from data_engine.market_tradingdate import Market_tradingdate
-import data_engine.global_variable as global_variable
+from resRepo.data_engine.instrument.future import Future
+from resRepo.data_engine.instrument.product import Product
+from resRepo.data_engine.market_tradingdate import Market_tradingdate
+import resRepo.data_engine.global_variable as global_variable
 import talib
 
 

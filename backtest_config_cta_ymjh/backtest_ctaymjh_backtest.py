@@ -8,7 +8,7 @@ import datetime
 import pandas as pd
 
 CurrentPath = os.path.dirname(__file__)
-# print(CurrentPath)
+print(CurrentPath)
 sys.path.append(CurrentPath.replace('backtest_config_cta_ymjh', ''))
 # print(sys.path)
 import warnings
@@ -16,35 +16,36 @@ import time
 
 warnings.filterwarnings("ignore")
 import traceback
+from resRepo import *
 
-import data_engine.setting as setting
-from data_engine.data_factory import DataFactory
-from common.file_saver import file_saver
-from common.decorator import runing_time
-from data_engine.market_tradingdate import Market_tradingdate
-from data_engine.instrument.future import Future
-import data_engine.global_variable as global_variable
+import resRepo.data_engine.setting as setting
+from resRepo.data_engine.data_factory import DataFactory
+from resRepo.common.file_saver import file_saver
+from resRepo.common.decorator import runing_time
+from resRepo.data_engine.market_tradingdate import Market_tradingdate
+from resRepo.data_engine.instrument.future import Future
+import resRepo.data_engine.global_variable as global_variable
 
 t1 = time.clock()
-from common.logger import logger
-from common.file_saver import file_saver
-from config.config import Config_back_test
-import data_engine.setting as setting
-from data_engine.setting import ASSETTYPE_FUTURE
-from data_engine.data_factory import DataFactory
-from analysis.execution_settle_analysis import execution_settle_analysis
+from resRepo.common.logger import logger
+from resRepo.common.file_saver import file_saver
+from resRepo.config.config import Config_back_test
+import resRepo.data_engine.setting as setting
+# from resRepo.data_engine.setting import ASSETTYPE_FUTURE
+from resRepo.data_engine.data_factory import DataFactory
+from resRepo.analysis.execution_settle_analysis import execution_settle_analysis
 from backtest_config_cta_ymjh.ctaymjh import CtaYmjhStrategy_ex
 
 import time
 import datetime
-import data_engine.setting as setting
-from common.os_func import check_fold
-from common.file_saver import file_saver
-from common.logger import logger
-from data_engine.data_factory import DataFactory
-from data_engine.setting import ASSETTYPE_FUTURE
-from config.config import Config_back_test
-from backtest_config_cta_ymjh.ctaymjh import CtaYmjhStrategy_ex,get_trade_days,get_day_and_night_symbols
+import resRepo.data_engine.setting as setting
+from resRepo.common.os_func import check_fold
+from resRepo.common.file_saver import file_saver
+from resRepo.common.logger import logger
+from resRepo.data_engine.data_factory import DataFactory
+# from resRepo.data_engine.setting import ASSETTYPE_FUTURE
+from resRepo.config.config import Config_back_test
+from backtest_config_cta_ymjh.ctaymjh import CtaYmjhStrategy_ex, get_trade_days, get_day_and_night_symbols
 
 # @runing_time
 def run_backtest(product, config_file_yaml, curr_date, saving_file=False):
@@ -61,7 +62,7 @@ def run_backtest(product, config_file_yaml, curr_date, saving_file=False):
             each, config.get_execution_config('exec_lag')))
         config.strategy_id = 'Ymjh-Daily'
         # 回测
-        stragetgy_obj = CtaYmjhStrategy_ex(config=config, curr_date=curr_date,asset_type=ASSETTYPE_FUTURE,
+        stragetgy_obj = CtaYmjhStrategy_ex(config=config, curr_date=curr_date, asset_type=ASSETTYPE_FUTURE,
                                            symbol=each)
         signal_dataframe = stragetgy_obj.run_test()
         # signal_dataframe = signal_dataframe.loc[ '2018-01-01':, ]
@@ -91,17 +92,18 @@ def run_backtest(product, config_file_yaml, curr_date, saving_file=False):
         file_saver().join()
     logger().debug('=================', 'run_backtest', '%.6fs' % (time.clock() - t1))
 
+
 if __name__ == '__main__':
     DataFactory.config(MONGDB_PW='jz501241', MONGDB_USER='dbmanager_future',
                        DATASOURCE_DEFAULT=global_variable.DATASOURCE_REMOTE)
     from multiprocessing import Pool, cpu_count
     import datetime
-    from common.os_func import check_fold
-    from common.logger import logger
-    from config.config import Config_back_test
-    from portfolio_management.strategy import Strategy
-    from strategy.strategy import strategy_helper
-    from data_engine.market_tradingdate import Market_tradingdate
+    from resRepo.common.os_func import check_fold
+    from resRepo.common.logger import logger
+    from resRepo.config.config import Config_back_test
+    from resRepo.portfolio_management.strategy import Strategy
+    from resRepo.strategy.strategy import strategy_helper
+    from resRepo.data_engine.market_tradingdate import Market_tradingdate
 
     tradingdates = Market_tradingdate('SHF')
     tradingdates.get_hisdata()
